@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Waktu Solat Harian</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <div class="container">
         <h1>Waktu Solat Harian</h1>
-        <p id="location" class="info">Sedang mendapatkan lokasi anda...</p>
+        <div class="location-info">
+            <p id="location-coordinates">Latitude: --, Longitude: --</p>
+            <p id="location-name">Sedang mendapatkan lokasi...</p>
+        </div>
         <div class="date-container">
             <div class="date-box">
                 <h3>Tarikh Masihi</h3>
@@ -29,9 +32,10 @@
             <p id="next-prayer">Sedang mengira waktu solat seterusnya...</p>
         </div>
         <button id="toggle-theme">Tukar Mod Gelap</button>
+        <footer class="footer">
+            <p>Versi Aplikasi: <span id="app-version">1.0.0</span></p>
+        </footer>
     </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
-

@@ -5,35 +5,39 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-    transition: all 0.3s ease-in-out;
-}
-
-h1, h2, h3 {
-    color: #007bff;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.container {
-    max-width: 700px;
-    margin: 50px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Info text */
-.info {
-    font-size: 1.2em;
+/* Main container */
+.container {
+    max-width: 95%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive headings */
+h1 {
+    font-size: 1.8em;
+    color: #007bff;
+}
+
+/* Location Info */
+.location-info {
+    margin: 15px 0;
+    font-size: 1.1em;
     color: #555;
+    word-wrap: break-word;
 }
 
 /* Date Section */
 .date-container {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
     margin: 20px 0;
 }
 
@@ -42,20 +46,23 @@ h1, h2, h3 {
     color: white;
     padding: 15px;
     border-radius: 8px;
-    width: 45%;
+    width: 100%;
+    max-width: 320px;
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    font-size: 1.2em;
 }
 
-/* Prayer Time Section */
-.prayer-time-container {
-    margin-top: 20px;
-    text-align: left;
+/* Prayer Times Section */
+.prayer-time-container h2 {
+    font-size: 1.5em;
+    color: #007bff;
 }
 
 #prayer-times {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    padding: 10px;
 }
 
 .prayer {
@@ -63,12 +70,10 @@ h1, h2, h3 {
     padding: 15px;
     border-radius: 8px;
     font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
     text-align: center;
 }
 
-/* Countdown Section */
+/* Countdown Timer */
 .countdown-box {
     background: #28a745;
     color: white;
@@ -81,7 +86,7 @@ h1, h2, h3 {
 
 /* Toggle Theme Button */
 button {
-    padding: 15px 25px;
+    padding: 15px 20px;
     margin-top: 20px;
     background: #007bff;
     color: white;
@@ -89,6 +94,8 @@ button {
     cursor: pointer;
     border-radius: 5px;
     font-size: 1.1em;
+    width: 100%;
+    max-width: 320px;
     transition: background 0.3s ease;
 }
 
@@ -96,7 +103,17 @@ button:hover {
     background: #0056b3;
 }
 
-/* Dark Mode */
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* Dark Mode Styles */
 .dark-mode {
     background: #1a1a1a;
     color: #ffffff;
@@ -118,4 +135,41 @@ button:hover {
 .dark-mode button {
     background: #ffc107;
     color: black;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .date-box {
+        font-size: 1em;
+    }
+
+    #prayer-times {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .countdown-box {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    #prayer-times {
+        grid-template-columns: 1fr;
+    }
+
+    button {
+        font-size: 1em;
+    }
 }
