@@ -46,10 +46,10 @@ h1 {
     color: white;
     padding: 15px;
     border-radius: 8px;
-    width: 100%;
+    width: 80%;
     max-width: 320px;
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 /* Prayer Times Section */
