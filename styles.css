@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+h1, h2, h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Info text */
+.info {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Date Section */
+.date-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.date-box {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 45%;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Prayer Time Section */
+.prayer-time-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#prayer-times {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.prayer {
+    background: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Countdown Section */
+.countdown-box {
+    background: #28a745;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Toggle Theme Button */
+button {
+    padding: 15px 25px;
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-mode .container {
+    background: #333;
+    color: white;
+}
+
+.dark-mode .date-box {
+    background: #28a745;
+}
+
+.dark-mode .prayer {
+    background: #555;
+}
+
+.dark-mode button {
+    background: #ffc107;
+    color: black;
+}
