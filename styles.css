@@ -1,175 +1,101 @@
-/* General Styles */
+/* General Reset */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #f0f2f5;
     margin: 0;
-    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Light Mode */
+body.light-mode {
+    background: linear-gradient(to right, #ffafbd, #ffc3a0);
     color: #333;
-    text-align: center;
 }
 
-/* Main container */
+/* Dark Mode */
+body.dark-mode {
+    background: linear-gradient(to right, #232526, #414345);
+    color: white;
+}
+
 .container {
-    max-width: 95%;
+    max-width: 400px;
     margin: 30px auto;
-    background: white;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background 0.3s ease-in-out;
 }
 
-/* Responsive headings */
-h1 {
-    font-size: 1.8em;
-    color: #007bff;
+.dark-mode .container {
+    background: rgba(0, 0, 0, 0.7);
 }
 
 /* Location Info */
 .location-info {
-    margin: 15px 0;
-    font-size: 1.1em;
-    color: #555;
-    word-wrap: break-word;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
-/* Date Section */
+/* Date Boxes */
 .date-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+    justify-content: space-between;
 }
 
 .date-box {
-    background: #007bff;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 320px;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-    font-size: 1.5em;
-}
-
-/* Prayer Times Section */
-.prayer-time-container h2 {
-    font-size: 1.5em;
-    color: #007bff;
-}
-
-#prayer-times {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
+    background: rgba(255, 255, 255, 0.8);
     padding: 10px;
-}
-
-.prayer {
-    background: #e9ecef;
-    padding: 15px;
+    width: 48%;
     border-radius: 8px;
-    font-size: 1.1em;
     text-align: center;
+    font-weight: bold;
+    transition: transform 0.3s ease;
 }
 
-/* Countdown Timer */
-.countdown-box {
-    background: #28a745;
-    color: white;
-    padding: 15px;
+.date-box:hover {
+    transform: scale(1.05);
+}
+
+.dark-mode .date-box {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Prayer Times */
+.prayer-time-container {
     margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    font-size: 1.2em;
-    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .prayer-time-container {
+    background: rgba(0, 0, 0, 0.6);
 }
 
 /* Toggle Theme Button */
-button {
-    padding: 15px 20px;
+#toggle-theme {
     margin-top: 20px;
-    background: #007bff;
+    background: #ff6f61;
     color: white;
     border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.1em;
-    width: 100%;
-    max-width: 320px;
-    transition: background 0.3s ease;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
 }
 
-button:hover {
-    background: #0056b3;
+#toggle-theme:hover {
+    background: #ff3b2f;
 }
 
 /* Footer */
 .footer {
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
     margin-top: 20px;
-    padding: 10px;
-    border-top: 1px solid #ddd;
-}
-
-/* Dark Mode Styles */
-.dark-mode {
-    background: #1a1a1a;
-    color: #ffffff;
-}
-
-.dark-mode .container {
-    background: #333;
-    color: white;
-}
-
-.dark-mode .date-box {
-    background: #28a745;
-}
-
-.dark-mode .prayer {
-    background: #555;
-}
-
-.dark-mode button {
-    background: #ffc107;
-    color: black;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .date-box {
-        font-size: 1em;
-    }
-
-    #prayer-times {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .countdown-box {
-        font-size: 1em;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.3em;
-    }
-
-    #prayer-times {
-        grid-template-columns: 1fr;
-    }
-
-    button {
-        font-size: 1em;
-    }
+    font-size: 14px;
+    opacity: 0.8;
 }
