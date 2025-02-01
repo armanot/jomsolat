@@ -232,80 +232,28 @@ function getMonthName(monthNumber) {
 // Function to highlight the nearest upcoming prayer
 function highlightNearestPrayer(prayerTimes) {
     const now = new Date();
-    let currentTimeMinutes = now.getHours() * 60 + now.getMinutes(); // Current time in total minutes
+    const currentTime = now.getHours() * 60 + now.getMinutes(); // Convert to minutes for comparison
     let nearestPrayer = null;
     let minDifference = Number.MAX_VALUE;
-    let isNextDayPrayer = false;
-
-    console.log("🔍 Checking nearest prayer...");
 
     prayerTimes.forEach((prayer) => {
-        let prayerTimeFormatted = prayer.time
-            .replace("PG", "AM")
-            .replace("PTG", "PM")
-            .replace("MLM", "PM"); // Convert Malay time format to English
+        const [hour, minute] = prayer.time.split(":").map(Number);
+        const prayerTimeMinutes = hour * 60 + minute;
 
-        let timeParts = prayerTimeFormatted.match(/(\d+):(\d+) (AM|PM)/);
-        if (!timeParts) {
-            console.error(`⛔ Error parsing prayer time: ${prayer.time}`);
-            return;
-        }
-
-        let hour = parseInt(timeParts[1], 10);
-        let minute = parseInt(timeParts[2], 10);
-        const period = timeParts[3];
-
-        // Convert to 24-hour format
-        if (period === "PM" && hour !== 12) {
-            hour += 12;
-        } else if (period === "AM" && hour === 12) {
-            hour = 0; // Midnight case
-        }
-
-        let prayerTimeMinutes = hour * 60 + minute;
-
-        console.log(`🕒 ${prayer.name}: ${hour}:${minute} (${prayerTimeMinutes} min) | Current: ${currentTimeMinutes} min`);
-
-        // If current time is past Isyak, consider the next Subuh as the next prayer
-        if (prayerTimeMinutes < currentTimeMinutes) {
-            isNextDayPrayer = true; // Mark that we're looking for next-day prayers
-            return;
-        }
-
-        // Find the nearest upcoming prayer
-        if (prayerTimeMinutes > currentTimeMinutes && (prayerTimeMinutes - currentTimeMinutes < minDifference)) {
-            minDifference = prayerTimeMinutes - currentTimeMinutes;
+        if (prayerTimeMinutes > currentTime && prayerTimeMinutes - currentTime < minDifference) {
+            minDifference = prayerTimeMinutes - currentTime;
             nearestPrayer = prayer;
         }
     });
 
-    // If no upcoming prayer was found, highlight next day's Subuh
-    if (!nearestPrayer && isNextDayPrayer) {
-        nearestPrayer = prayerTimes[0]; // First prayer (Subuh)
-        console.log(`🌙 Switching to next day's Subuh: ${nearestPrayer.name} at ${nearestPrayer.time}`);
-    }
-
-    // Remove previous highlights
-    document.querySelectorAll(".prayer-time").forEach((element) => {
-        element.classList.remove("highlight");
-        element.querySelector(".now-badge")?.remove();
-    });
-
     if (nearestPrayer) {
-        console.log(`✨ Nearest prayer: ${nearestPrayer.name} (${nearestPrayer.time})`);
-
         document.querySelectorAll(".prayer-time").forEach((element) => {
-            if (element.innerText.includes(nearestPrayer.name)) {
+            if (element.innerHTML.includes(nearestPrayer.name)) {
                 element.classList.add("highlight");
                 if (minDifference <= 15) {
-                    const nowBadge = document.createElement("span");
-                    nowBadge.classList.add("now-badge");
-                    nowBadge.innerText = "🕌 Sekarang";
-                    element.appendChild(nowBadge);
+                    element.innerHTML += ` <span class="now-badge">🕌 Sekarang</span>`;
                 }
             }
         });
-    } else {
-        console.log("⚠️ No upcoming prayer found.");
     }
 }

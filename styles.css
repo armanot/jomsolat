@@ -99,3 +99,64 @@ body.dark-mode {
     font-size: 14px;
     opacity: 0.8;
 }
+
+.hadith-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.dark-mode .hadith-container {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#hadith-text {
+    font-style: italic;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#hadith-source {
+    font-weight: bold;
+    color: #ff6f61;
+}
+
+/* Prayer Time Container */
+/* General Prayer Time Styling */
+.prayer-time {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+/* Slow Blinking Effect for Nearest Prayer */
+.highlight {
+    background: #ff6f61;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: smooth-blink 2.5s infinite alternate ease-in-out; /* Adjusted duration */
+}
+
+/* Smooth Blinking Animation */
+@keyframes smooth-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* "Now" Badge Styling */
+.now-badge {
+    background: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+}
