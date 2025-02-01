@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     loadThemePreference();
     fetchHijriDate();
+    startClock(); // Start updating the clock
 
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -27,6 +28,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("toggle-theme").addEventListener("click", toggleTheme);
 });
+
+// Function to start the real-time clock
+function startClock() {
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('ms-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById("current-time").innerText = `⏰ Waktu Sekarang: ${timeString}`;
+    }
+
+    updateClock(); // Initial call
+    setInterval(updateClock, 1000); // Update every second
+}
 
 // Function to fetch Malaysia-specific prayer times
 async function fetchPrayerTimes(lat, lon) {
